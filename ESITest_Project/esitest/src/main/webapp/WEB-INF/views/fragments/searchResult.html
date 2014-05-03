@@ -1,0 +1,58 @@
+
+<div th:fragment="searchResult">
+
+	<table class="table striped hovered dataTable" id="emptable">
+		<thead>
+			<tr>
+				<th class="text-left" th:text="${'EIN: '+user.wguEin}">EIN</th>
+				<th class="text-left" th:text="${'Name: '+user.wguFirstname + ' '+ user.wguSurname}">Name</th>
+				<th class="text-left" th:text="${'OUC: '+user.wguOuc}">OUC</th>
+				<th class="text-left" th:text="${'Contact: '+user.wguPhone}">Contact</th>
+			</tr>
+		</thead>
+	</table>
+
+	<table class="table striped hovered dataTable" id="dataTables-1">
+		<thead>
+			<tr>
+				<th class="text-left">Item Serial</th>
+				<th class="text-left">Item Name</th>
+				<th class="text-left">Category</th>
+				<th class="text-left">Next Check Date</th>
+				<th class="text-left">Item Status</th>
+				<th class="text-left">Remarks</th>
+				<th class="text-left">Item Type</th>
+				<th class="text-left">Delete</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<tr th:each="item,rowStat : ${items}" th:id="${item.teiId}">
+				<td th:if="${item.teiItemSerial} != ''"
+					th:text="${item.teiItemSerial}">Serial</td>
+				<td th:if="${item.teiItemSerial} == ''" th:text="#{message.na}">N/A</td>
+				<td th:text="${item.teiMaster.timItemName}">Serial</td>
+				<td th:text="${item.teiMaster.checkTypes.fctCheckTypeDescription}">Serial</td>
+				<td th:text="${#dates.format(item.teiNextCheckDate, 'dd/MM/yyyy')}">Serial</td>
+				<td th:text="${item.itemStatus.tisItemStatusDescription}">Serial</td>
+				<td th:text="${item.teiRemarks}">Serial</td>
+				<td th:text="${item.teiIsBuilding}">Serial</td>
+				<td><a class="table-action-deletelink">Delete</a></td>
+			</tr>
+		</tbody>
+
+		<tfoot>
+			<tr>
+				<th class="text-left">Item Serial</th>
+				<th class="text-left">Item Name</th>
+				<th class="text-left">Category</th>
+				<th class="text-left">Next Check Date</th>
+				<th class="text-left">Item Status</th>
+				<th class="text-left">Remarks</th>
+				<th class="text-left">Item Type</th>
+				<th class="text-left">Delete</th>
+			</tr>
+		</tfoot>
+	</table>
+
+</div>

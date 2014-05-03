@@ -1,0 +1,72 @@
+.form-narrow {
+	max-width: 490px;
+	padding: 19px 29px 29px;
+	margin: 0 auto 20px;
+	background-color: #fff;
+	border: 1px solid #e5e5e5;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	-webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+	-moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+	box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+}
+
+.metro .sidebar.lightblue {
+	background-color: #1ba1e2;
+	border: 1px #eaeaea solid;
+}
+
+.metro .sidebar.lightblue li {
+	border-bottom-color: #ffffff;
+}
+
+.metro .sidebar.lightblue li.title {
+	color: #1d1d1d;
+}
+
+.metro .sidebar.lightblue li a {
+	color: #ffffff;
+	background-color: #1ba1e2;
+}
+
+.metro .sidebar.lightblue li a:hover {
+	background-color: #00aff0;
+}
+
+.metro .sidebar.lightblue li ul {
+	background-color: lightblue;
+	border: 1px transparent solid;
+}
+
+.metro .sidebar.lightblue ul ul li a {
+	background-color: lightblue;
+	color: #000000;
+}
+
+.metro .sidebar.lightblue li .divider {
+	background-color: #eeeeee;
+}
+
+.metro .sidebar.lightblue li .divider:hover {
+	background-color: #eeeeee;
+}
+
+.metro .sidebar.lightblue li.disabled a {
+	background-color: lightblue;
+	cursor: default;
+	color: #999999;
+}
+
+.metro .sidebar.lightblue li.active a {
+	background-color: #003366;
+	color: #FFFFFF;
+}
+
+.metro .navigation-bar,
+.metro .navbar {
+  width: 100%;
+  display: block;
+  background-color: #003366;
+  color: #ffffff;
+}

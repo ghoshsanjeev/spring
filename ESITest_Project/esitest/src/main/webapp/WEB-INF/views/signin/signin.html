@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Sign In</title>
+<link href="../../../resources/css/bootstrap.min.css" rel="stylesheet"
+	media="screen" th:href="@{/resources/css/bootstrap.min.css}" />
+<link href="../../../resources/css/dashboard.css" rel="stylesheet"
+	media="screen" th:href="@{/resources/css/dashboard.css}" />
+<link href="../../../resources/css/docs.css" rel="stylesheet"
+	media="screen" th:href="@{/resources/css/docs.css}" />
+<link href="../../../resources/css/core.css" rel="stylesheet"
+	media="screen" th:href="@{/resources/css/core.css}" />
+<link href="../../../resources/css/metro-bootstrap.min.css"
+	rel="stylesheet" media="screen"
+	th:href="@{/resources/css/metro-bootstrap.min.css}" />
+<link href="../../../resources/css/metro-bootstrap.responsive.css"
+	rel="stylesheet" media="screen"
+	th:href="@{/resources/css/metro-bootstrap.responsive.css}" />
+<link href="../../../resources/css/prettify.css" rel="stylesheet"
+	media="screen" th:href="@{/resources/css/prettify.css}" />
+<script src="../../../resources/js/jquery.min.js"
+	th:src="@{/resources/js/jquery.min.js}"></script>
+<script src="../../../resources/js/jquery.widget.min.js"
+	th:src="@{/resources/js/jquery.widget.min.js}"></script>
+<script src="../../../resources/js/metro.min.js"
+	th:src="@{/resources/js/metro.min.js}"></script>
+<script src="../../../resources/js/docs.min.js"
+	th:src="@{/resources/js/docs.min.js}"></script>
+<script src="../../../resources/js/prettify.js"
+	th:src="@{/resources/js/prettify.js}"></script>
+<script src="../../../resources/js/jquery.mousewheel.js"
+	th:src="@{/resources/js/jquery.mousewheel.js}"></script>
+</head>
+<body class="metro">
+	
+	<DIV class="container">
+		<header class="margin20 nrm nlm">
+			<a class="place-left" href="#" title="">
+				<h1>esiTest</h1>
+			</a> <a class="place-right" href="#" title=""> <img
+				class="place-right" src="../../../resources/images/bt_logo.gif"
+				th:src="@{/resources/images/bt_logo.gif}" />
+			</a>
+
+		</header>
+		<div style="padding:100px;">
+			<div class="form-narrow form-horizontal">
+				<form action="/j_spring_security_check" method="post"
+					th:action="@{/j_spring_security_check}">
+					<th:block th:if="${param.error != null}">
+						<div
+							th:replace="fragments/alert :: alert (type='danger', message='Invalid Username/password. Please try again.')">Alert</div>
+					</th:block>
+					<fieldset>
+						<legend>Log In</legend>
+						<label>Username</label>
+						<div class="input-control text" data-role="input-control">
+							<input type="text" placeholder="type username" name="j_username" />
+							<button class="btn-clear" tabindex="-1"></button>
+						</div>
+						<label>Password</label>
+						<div class="input-control password" data-role="input-control">
+							<input type="password" placeholder="type password"
+								name="j_password" />
+							<button class="btn-reveal" tabindex="-1"></button>
+						</div>
+						<div class="input-control checkbox" data-role="input-control">
+							<label> <input type="checkbox"
+								name="_spring_security_remember_me" /> <span class="check"></span>
+								Remember me
+							</label>
+						</div>
+						<div class="form-group" align="center">
+							<input type="submit" class="large info" value="Log in" />
+						</div>
+					</fieldset>
+				</form>
+			</div>
+		</div>
+	</DIV>
+</body>
+</html>

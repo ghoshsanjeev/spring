@@ -1,0 +1,100 @@
+
+<div th:fragment="dueEsitest">
+
+	<table class="table striped hovered dataTable" id="emptable">
+		<thead>
+			<tr>
+				<th class="text-left" th:text="${'EIN: '+session.currentUser.wguEin}">EIN</th>
+				<th class="text-left"
+					th:text="${'Name: '+session.currentUser.wguFirstname + ' '+ session.currentUser.wguSurname}">Name</th>
+				<th class="text-left" th:text="${'OUC: '+session.currentUser.wguOuc}">OUC</th>
+				<th class="text-left" th:text="${'Contact: '+session.currentUser.wguPhone}">Contact</th>
+			</tr>
+		</thead>
+	</table>
+
+	<center>Due esiTest</center>
+	<table class="table striped hovered dataTable" id="dataTables-1">
+		<thead>
+			<tr>
+				<th class="text-left">Esi Test Id</th>
+				<th class="text-left">Tester EIN</th>
+				<th class="text-left">Test By</th>
+				<th class="text-left">Building</th>
+				<th class="text-left">Type</th>	 		
+			</tr>
+		</thead>
+
+		<tbody>
+			<tr th:each="esiTest,rowStat : ${dueesitest}" th:id="${esiTest[0]}">
+				<td th:text="${esiTest[0]}">Serial</td>
+				<td th:text="${esiTest[1]}">Serial</td>
+				<td th:text="${#dates.format(esiTest[2],'dd/MM/yyyy')}">Serial</td>
+				<td th:text="${esiTest[3]}">Serial</td>
+				<td th:text="${esiTest[4]}">Serial</td>
+
+			</tr>
+		</tbody>
+
+		<tfoot>
+			<tr>
+				<th class="text-left">Esi Test Id</th>
+				<th class="text-left">Tester EIN</th>
+				<th class="text-left">Test By</th>
+				<th class="text-left">Building</th>
+				<th class="text-left">Type</th>			
+			</tr>
+		</tfoot>
+	</table>
+</div>
+
+
+<div th:fragment="overdueEsitest">	
+	<center>OverDue esiTest</center>
+	<table class="table striped hovered dataTable" id="dataTables-2">
+		<thead>
+			<tr>
+				<th class="text-left">Esi Test Id</th>
+				<th class="text-left">Tester EIN</th>
+				<th class="text-left">Test By</th>
+				<th class="text-left">Status</th>
+				<th class="text-left">Building</th>
+				<th class="text-left">Type</th>	 	
+				<th class="text-left">EscLevel</th>
+				<th class="text-left">Escalated</th>	 	
+				<th class="text-left">Escalation Manager</th>	 		 	
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr th:each="overDueEsiTest,rowStat : ${overDueEsiTests}" th:id="${overDueEsiTest[0]}">
+				<td th:text="${overDueEsiTest[0]}">Serial</td>
+				<td th:text="${overDueEsiTest[1]}">Serial</td>
+				<td th:text="${#dates.format(overDueEsiTest[2], 'dd/MM/yyyy')}">Serial</td>
+				<td th:text="${overDueEsiTest[3]}">Serial</td>
+				<td th:text="${overDueEsiTest[4]}">Serial</td>
+				<td th:text="${overDueEsiTest[5]}">Serial</td>
+				<td th:text="${overDueEsiTest[6]}">Serial</td>
+				<td th:text="${overDueEsiTest[7]}">Serial</td>
+				<td th:if="${overDueEsiTest[8]} != '0'"
+					th:text="${overDueEsiTest[8]}">Serial</td>
+				<td th:if="${overDueEsiTest[8]} == '0'" th:text="--NULL--">N/A</td>
+				
+			</tr>
+		</tbody>
+		
+		<tfoot>
+			<tr>
+				<th class="text-left">Esi Test Id</th>
+				<th class="text-left">Tester EIN</th>
+				<th class="text-left">Test By</th>
+				<th class="text-left">Status</th>
+				<th class="text-left">Building</th>
+				<th class="text-left">Type</th>	 	
+				<th class="text-left">EscLevel</th>
+				<th class="text-left">Escalated</th>	 	
+				<th class="text-left">Escalation Manager</th>	 		 	
+			</tr>
+		</tfoot>
+	 </table>
+</div>

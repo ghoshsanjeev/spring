@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<div class="navigation-bar" th:fragment="header">
+
+	<div class="navigation-bar-content  container">
+
+		<a href="/" class="element">Supply Chain</a> <span
+			class="element-divider"></span> <a class="element" href="#">Home</a>
+		<span class="element-divider"></span> <a class="element" href="#">Feedback</a>
+		<span class="element-divider"></span>
+		<img class="place-right" src="../../../resources/images/bt_logo.gif"
+		th:src="@{/resources/images/bt_logo.gif}"/>
+		<span class="element-divider place-right"></span>
+		<div class="element place-right">
+			<a href="#" class="dropdown-toggle"> <span class="icon-cog"></span>
+			</a>
+			<ul data-role="dropdown" class="dropdown-menu place-right">
+				<li th:if="${#authorization.expression('!isAuthenticated()')}"><a
+					href="/signin" th:href="@{/signin}">Log in</a></li>
+				<li th:if="${#authorization.expression('isAuthenticated()')}"><a
+					href="/logout" th:href="@{/logout}">Logout</a></li>
+			</ul>
+		</div>
+		
+		<span class="element-divider place-right"></span>
+		
+
+	</div>
+</div>

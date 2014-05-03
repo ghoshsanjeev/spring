@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title th:text="#{view.index.title}">Welcome!</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<link
+	href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700'
+	rel='stylesheet' type='text/css'></link>
+<link rel="stylesheet"
+	href="http://netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.min.css"></link>
+<script type="text/javascript"
+	src="http://oss.maxcdn.com/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+<link href="../../../resources/css/bootstrap.min.css" rel="stylesheet"
+	media="screen" th:href="@{/resources/css/bootstrap.min.css}" />
+<link href="../../../resources/css/dashboard.css" rel="stylesheet"
+	media="screen" th:href="@{/resources/css/dashboard.css}" />
+<link href="../../../resources/css/docs.css" rel="stylesheet"
+	media="screen" th:href="@{/resources/css/docs.css}" />
+<link href="../../../resources/css/metro-bootstrap.min.css"
+	rel="stylesheet" media="screen"
+	th:href="@{/resources/css/metro-bootstrap.min.css}" />
+<link href="../../../resources/css/metro-bootstrap.responsive.css"
+	rel="stylesheet" media="screen"
+	th:href="@{/resources/css/jquery.multilevelpushmenu.css}" />
+<link href="../../../resources/css/jquery.multilevelpushmenu.css"
+	rel="stylesheet" media="screen"
+	th:href="@{/resources/css/bootstrap_integration.css}" />
+<link href="../../../resources/css/bootstrap_integration.css"
+	rel="stylesheet" media="screen"
+	th:href="@{/resources/css/metro-bootstrap.responsive.css}" />
+<link href="../../../resources/css/prettify.css" rel="stylesheet"
+	media="screen" th:href="@{/resources/css/prettify.css}" />
+<link href="../../../resources/css/core.css" rel="stylesheet"
+	media="screen" th:href="@{/resources/css/core.css}" />
+<script src="../../../resources/js/jquery.min.js"
+	th:src="@{/resources/js/jquery.min.js}"></script>
+<script src="../../../resources/js/jquery.widget.min.js"
+	th:src="@{/resources/js/jquery.widget.min.js}"></script>
+<script src="../../../resources/js/metro.min.js"
+	th:src="@{/resources/js/metro.min.js}"></script>
+<script src="../../../resources/js/jquery.dataTables.js"
+	th:src="@{/resources/js/jquery.dataTables.js}"></script>
+<script src="../../../resources/js/prettify.js"
+	th:src="@{/resources/js/prettify.js}"></script>
+<script src="../../../resources/js/jquery.mousewheel.js"
+	th:src="@{/resources/js/jquery.mousewheel.js}"></script>
+<script src="../../../resources/js/jquery.multilevelpushmenu.min.js"
+	th:src="@{/resources/js/jquery.multilevelpushmenu.min.js}"></script>
+<script src="../../../resources/js/bootstrap_integration.js"
+	th:src="@{/resources/js/bootstrap_integration.js}"></script>
+<!-- <script src="../../../resources/js/bootstrap.min.js"
+	th:src="@{/resources/js/bootstrap.min.js}"></script> -->
+<script src="../../../resources/js/docs.js"
+	th:src="@{/resources/js/docs.js}"></script>
+<script src="../../../resources/js/jquery.jeditable.mini.js"
+	th:src="@{/resources/js/jquery.jeditable.mini.js}"></script>
+<script src="../../../resources/js/jquery.dataTables.editable.js"
+	th:src="@{/resources/js/jquery.dataTables.editable.js}"></script>
+
+
+
+
+</head>
+<body class="metro">
+	<div th:replace="fragments/header :: header">&nbsp;</div>
+
+
+	<DIV class="container">
+		<nav class="breadcrumbs">
+			<ul>
+				<li><a href="/" th:href="@{/}"><i class="icon-home"></i></a></li>
+				<li><a href="/" th:href="@{/}">Home</a></li>
+				<li th:if="${itemSearchForm}" class="active"><a href="/additem"
+					th:href="@{/additem}">Add / Edit Items</a></li>
+				<li th:if="${signupForm}" class="active"><a href="/signup"
+					th:href="@{/signup}">Add User</a></li>
+			</ul>
+		</nav>
+
+		<h1>esiTest - Engineering Safety Integrity Test</h1>
+		<h3>
+			<th:block th:if="${session.currentUser}">
+			Welcome
+			<div th:object="${session.currentUser}" style="display: inline">
+					<span th:text="*{wguFirstname}"></span>
+				</div>
+			</th:block>
+		</h3>
+
+		<div class="col-md-12">
+			<th:block th:if="${signupForm}">
+				<div th:replace="fragments/addUser :: addUser">&nbsp;</div>
+			</th:block>
+
+			<th:block th:if="${myitems}">
+				<div th:replace="fragments/myItems :: myitems">&nbsp;</div>
+				<script>
+					$(document).ready(function() {
+						$('#dataTables-1').dataTable({
+							"sPaginationType" : "full_numbers"
+						})
+					});
+				</script>
+			</th:block>
+			
+			<th:block th:if="${dueesitest}">
+				<div th:replace="fragments/dueEsitests :: dueEsitest">&nbsp;</div>
+				<script>
+					$(document).ready(function() {
+						$('#dataTables-1').dataTable({
+							"sPaginationType" : "full_numbers"
+						})
+					});
+				</script>
+			</th:block>
+			
+			<th:block th:if="${overDueEsiTests}">
+				<div th:replace="fragments/dueEsitests :: overdueEsitest">&nbsp;</div>
+				<script>
+					$(document).ready(function() {
+						$('#dataTables-2').dataTable({
+							"sPaginationType" : "full_numbers"
+						})
+					});
+				</script>
+			</th:block>
+			
+			
+
+			<th:block th:if="${itemSearchForm}">
+				<div th:replace="fragments/searchItem :: searchItem">&nbsp;</div>
+
+				<th:block th:if="${itemForm}">
+					<div th:replace="fragments/searchResult :: searchResult">&nbsp;</div>
+					<div th:replace="fragments/addItem :: addItem">&nbsp;</div>
+				</th:block>
+				<script>
+					$(document).ready(function() {
+						$('#dataTables-1').dataTable({
+							"sPaginationType" : "full_numbers"
+						}).makeEditable({
+							sUpdateURL : "/esitest/itemUpdate",
+							sDeleteURL : "/esitest/itemDelete",
+							"aoColumns" : [ {
+								indicator : 'Saving Item Serial...',
+								tooltip : 'Click to edit Item Serial',
+								type : 'text',
+								submit : 'Save changes'
+							}, {}, {}, {
+								indicator : 'Saving Next Check Date...',
+								tooltip : 'Click to edit Next Check Date',
+								type : 'text',
+								submit : 'Save changes'
+							}, {}, {
+								indicator : 'Saving Remarks...',
+								tooltip : 'Click to edit Remarks',
+								type : 'textarea',
+								submit : 'Save changes'
+							}, {}, {}, {} ]
+						});
+					});
+				</script>
+
+			</th:block>
+		</div>
+
+		<th:block th:if="${mainMenu}">
+			<div th:each="menu,rowStat : ${mainMenu}">
+				<a data-click="transform" class="tile double bg-lightBlue"
+					href="/navigate"
+					th:href="@{/navigate(name=${menu.mmbMmButtonName})}">>
+					<div class="tile-content email" style="top: 0px; margin-left: 0px;">
+
+						<div class="email-data" style="margin-left: 0px;">
+							<span class="email-data-title" th:text="${menu.mmbMmButtonName}">My
+								esiTest</span> <span class="email-data-text"
+								th:text="${menu.mmbMmButtonDescription}">Engineer Module</span>
+						</div>
+					</div>
+				</a>
+			</div>
+		</th:block>
+
+		<th:block th:if="${subMenu}">
+			<div th:each="menu,rowStat : ${subMenu}">
+				<a data-click="transform" class="tile double bg-lightBlue"
+					href="/navigate"
+					th:href="@{/navigate(name=${menu.mmbMmButtonName})}">>
+					<div class="tile-content email" style="top: 0px; margin-left: 0px;">
+
+						<div class="email-data" style="margin-left: 0px;">
+							<span class="email-data-title" th:text="${menu.mmbMmButtonName}">My
+								esiTest</span> <span class="email-data-text"
+								th:text="${menu.mmbMmButtonDescription}">Engineer Module</span>
+						</div>
+					</div>
+				</a>
+			</div>
+		</th:block>
+		<!-- </DIV> -->
+
+	</DIV>
+
+
+</body>
+</html>
